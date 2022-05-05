@@ -1,5 +1,5 @@
 # go-icmpshell
-一款基于 `gopacket` 编写的 icmp 反弹 shell 工具
+一款基于 `gopacket` 编写的 ICMP 反弹 shell 工具
 
 ## Features
 - 支持自定义 ICMP 通信 id
