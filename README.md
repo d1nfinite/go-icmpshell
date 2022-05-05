@@ -17,7 +17,7 @@ Server 端启动监听
 ./server --token [secret]
 ```
 
-Client 端通过 ICMP 反弹 Shell
+Shell 端通过 ICMP 反弹 Shell
 ```shell
 ./shell --token [secret] --ip [server_ip_address]
 ```

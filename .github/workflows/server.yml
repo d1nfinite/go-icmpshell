@@ -1,0 +1,19 @@
+name: server
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '1.17.5'
+      - run: sudo apt update && sudo apt-get install -y libpcap-dev && go mod tidy && CGO_ENABLED=1 go build -a -o server_linux_amd64 -ldflags '-extldflags "-static"' ./cmd/server/cli.go
+      - uses: actions/upload-artifact@v2
+        with:
+          name: server
+          path: server_linux_amd64
+      - uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: server_linux_amd64
